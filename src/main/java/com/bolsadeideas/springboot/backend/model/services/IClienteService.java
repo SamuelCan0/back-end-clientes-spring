@@ -3,6 +3,7 @@ import java.util.List;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
+import com.bolsadeideas.springboot.backend.models_entity.Region;
 import com.bolsadeideas.springboot.backend.models_entity.cliente;
 
 public interface IClienteService {
@@ -17,5 +18,5 @@ public interface IClienteService {
 	
 	public void delete(Long id);
 	
-	
+	public List<Region> findAllRegiones();  
 }

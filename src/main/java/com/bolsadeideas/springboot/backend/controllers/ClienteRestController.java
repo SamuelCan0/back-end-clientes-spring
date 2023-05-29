@@ -33,6 +33,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.bolsadeideas.springboot.backend.model.services.IClienteService;
 import com.bolsadeideas.springboot.backend.model.services.IUploadFileService;
+import com.bolsadeideas.springboot.backend.models_entity.Region;
 import com.bolsadeideas.springboot.backend.models_entity.cliente;
 
 @CrossOrigin(origins = {"http://localhost:4200"})
@@ -151,6 +152,7 @@ public class ClienteRestController {
 		clienteActual.setEmail(client.getEmail());
 		clienteActual.setNombre(client.getNombre());
 		clienteActual.setCreateAt(client.getCreateAt());
+		clienteActual.setRegion(client.getRegion());
 		
 		clienteUpdate=clienteService.save(clienteActual);
 		
@@ -238,6 +240,11 @@ public class ClienteRestController {
 		cabecera.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\""+recurso.getFilename()+"\"");
 		
 		return new ResponseEntity<Resource>(recurso,cabecera,HttpStatus.OK);
+	}
+	
+	@GetMapping("/clientes/regiones")
+	public List<Region> listarRegiones(){
+		return clienteService.findAllRegiones();
 	}
 
 }

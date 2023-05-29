@@ -8,6 +8,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.bolsadeideas.springboot.backend.model.dao.IClienteDao;
+import com.bolsadeideas.springboot.backend.models_entity.Region;
 import com.bolsadeideas.springboot.backend.models_entity.cliente;
 
 import jakarta.transaction.Transactional;
@@ -48,6 +49,11 @@ public class ClienteServiceImpl implements IClienteService{
 	public void delete(Long id) {
 		clienteDao.deleteById(id);
 		
+	}
+
+	@Override
+	public List<Region> findAllRegiones() {
+		return clienteDao.findAllRegiones();
 	}
 
 
